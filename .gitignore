@@ -1,0 +1,8 @@
+node_modules/
+git/
+*~
+npm-debug.log
+.DS_Store
+public/bundle.js
+bundle.js
+config/
