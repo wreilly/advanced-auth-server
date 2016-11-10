@@ -14,7 +14,7 @@ stephen@gmail.com and
 STEPHEN@GMAIL.COM and
 STEPHEN@gmail.com
 would ALL BE "DIFFERENT".
-They would get past our Unique requirement.
+They would get past our Unique requirement. = Not Good.
 So:
 Do Mongoose's "lowercase: true" to store them all as lowercase. (Hmm.)
 */
@@ -49,11 +49,26 @@ NCkT1BlhLKE4VaQ7anEO.vRfNeTInjwziA3tuUwoqgu9Mla6V8NO
 
       // Overwrite plain text pw with encrypted! :o)
       user.password = hash;
+
       // Go ahead now and save ...
+      // That is, Run whatever was passed in above as the next(function) to run...
+      // Which I guess Mongoose takes care of to be: save to database.
       next();
     })
   })
 });
+
+// methods is a reserved word
+userSchema.methods.comparePassword = function(candidatePassword, callback) {
+  // this is our user model (instance)
+  // so this.password is our salted, hashed, stored password:
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    // bcrypt's "compare" does the work for us
+    if(err) { return callback(err); }
+    callback(null, isMatch);
+  });
+
+}
 
 
 

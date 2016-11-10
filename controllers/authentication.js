@@ -13,6 +13,21 @@ function tokenForUser(user) {
   return jwt.encode( { sub: user.id, iat: timestamp }, config.secret);
 }
 
+// Router: POST /signin   will run this function:
+exports.signin = function(req, res, next) {
+  // User has already has their e-mail and password Authenticated
+  // Q. Huh. And this was How? When? Where?
+  // A. In ROUTER.JS the call to this function was *prefaced* by "requireSignin"
+  //    "requireSignin" works some Passport 'behind-the-scenes' magic:
+  //        passport.authenticate('local', ...) ...
+
+  // So at this poin now we just need to give them a token:
+  // req.user is the current user model,
+  //   as received from passport.js comparePassword method
+  res.send({ token: tokenForUser(req.user) });
+}
+
+// Router: POST /signup   will run this function:
 exports.signup = function(req, res, next) {
 
   console.log("WR__ req.body", req.body);
