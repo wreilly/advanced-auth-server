@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Encrypt stored passwords. (Decrypt, too!)
 const bcrypt = require('bcrypt-nodejs');
 
 // =================
