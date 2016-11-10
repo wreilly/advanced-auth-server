@@ -6,3 +6,4 @@ npm-debug.log
 public/bundle.js
 bundle.js
 config/
+config.js
