@@ -8,6 +8,9 @@ const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
 
+// CORS
+const cors = require('cors');
+
 // DB SETUP
 /* CREATES A DATABASE INSIDE MONGO CALLED udemy_auth (I think?)
 Which will get used (?) for purpose of auth, yah?
@@ -40,6 +43,10 @@ mongoose.connect('mongodb://localhost:auth/auth');
 app.use(morgan('combined'));
 // Parse body of request from clients
 // Any request incoming ('*/*') will be handled as JSON
+
+// CORS
+app.use(cors());
+
 app.use(bodyParser.json( { type: '*/*' } ));
 router(app);
 

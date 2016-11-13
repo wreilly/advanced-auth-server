@@ -26,7 +26,8 @@ module.exports = function(app) {
 
 
   app.get('/', requireAuth, function(req, res) {
-    res.send(['requireAuthIGuess:)abc','tennis','lordy']);
+    // res.send(['requireAuthIGuess:)abc','tennis','lordy']);
+    res.send( { message: 'Super-duper secret code is (if you must know) ABC123f'});
   });
   // Your GET must have a Token
   // You obtain it, using RESTful Client, by steps below
