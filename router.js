@@ -33,6 +33,19 @@ module.exports = function(app) {
   // You obtain it, using RESTful Client, by steps below
   // If you don't have a Token: "Unauthorized"
 
+/* CLIENT console.log What the above sends:
+/SRC/ACTIONS/INDEX.JS:
+
+WR__ 888 fetchMessage() API '/' response:
+Object
+  config: Object
+  data: Object
+    message: "Super-duper secret code is (if you must know) ABC123f"
+*/
+
+
+
+
   app.post('/signin', requireSignin, Authentication.signin)
   // Your POST must have an email and a password
   // You'll get back a Token
